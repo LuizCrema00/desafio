@@ -6,17 +6,20 @@ use Illuminate\Http\Request;
 
 class UploadController extends Controller
 {
-    //
-    // public function upload(Request $request)
-    // {
-    //     $request->validate([
-    //         'file' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-    //         'path' => 'nullable|string'
-    //     ]);
+    public function upload(Request $request)
+    {
+        // Validar a imagem
+        $request->validate([
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+        ]);
 
-    //     $path = $request->input('path', 'uploads');
-    //     $filePath = $request->file('file')->store($path, 'public');
+        // Pegar o caminho opcional
+        $path = $request->query('path', 'uploads');
 
-    //     return response()->json(['path' => $filePath], 201);
-    // }
+        // Armazenar a imagem
+        $filePath = $request->file('image')->store($path, 'public');
+
+        // Retornar o caminho da imagem
+        return response()->json(['path' => $filePath], 201);
+    }
 }

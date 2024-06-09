@@ -22,4 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResource('produtos', ApiController::class);
 
-// Route::post('upload', [UploadController::class, 'upload']);
+Route::post('upload', [UploadController::class, 'upload']);
