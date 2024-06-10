@@ -18,6 +18,28 @@ class ApiController extends Controller
     {
         $produto = Produto::create($request->all());
 
-        return response()->json($produto, 201);
+        return response()
+            ->json($produto, 201);
     }
+
+    public function show (Produto $produto)
+    {
+        return $produto;
+    }
+
+    public function update (Produto $produto, Request $request)
+    {
+        $produto->fill($request->all());
+        $produto->save();
+
+        return $produto;
+    }
+
+    public function destroy (int $produto) 
+    {
+        Produto::destroy($produto);
+        return response()->noContent();
+    }
+
+
 }
