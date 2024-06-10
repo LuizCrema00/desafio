@@ -8,9 +8,13 @@ use Illuminate\Http\Request;
 class ApiController extends Controller
 {
     //
-    public function index() 
+    public function index(Request $request) 
     {
-        return Produto::all();
+       if (!$request->has('nome')) {
+            return Produto::all();
+       }
+
+       return Produto::whereNome($request->nome)->get();
 
     }
 
