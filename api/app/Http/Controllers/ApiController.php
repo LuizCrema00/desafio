@@ -22,9 +22,13 @@ class ApiController extends Controller
             ->json($produto, 201);
     }
 
-    public function show (Produto $produto)
+    public function show (int $produto)
     {
-        return $produto;
+       $produtoModel = Produto::find($produto);
+       if ($produtoModel === null) {
+            return response()->json(['message' => 'Produto nao encontrado'], 404);
+       }
+       return $produtoModel;
     }
 
     public function update (Produto $produto, Request $request)
