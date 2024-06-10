@@ -10,11 +10,12 @@ class ApiController extends Controller
     //
     public function index(Request $request) 
     {
-       if (!$request->has('nome')) {
-            return Produto::all();
+       $query = Produto::query();
+       if ($request->has('nome')) {
+            $query->where('nome', $request->nome);
        }
 
-       return Produto::whereNome($request->nome)->get();
+       return $query->paginate(5);
 
     }
 
