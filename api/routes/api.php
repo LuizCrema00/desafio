@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Http\Request;
@@ -26,8 +27,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('produtos', ApiController::class);
     Route::post('upload', [UploadController::class, 'upload']);
+    Route::post('/logout', [AuthController::class, 'logout']);
 });
 
-Route::post('/login', [LoginController::class, 'login']);
-Route::post('/cadastro', [RegisterController::class, 'registrar']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/cadastro', [AuthController::class, 'registrar']);
 

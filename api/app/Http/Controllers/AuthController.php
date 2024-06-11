@@ -4,12 +4,26 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-class RegisterController extends Controller
+class AuthController extends Controller
 {
-    public function registrar (Request $request) 
+    public function login (Request $request) 
+    {
+        $credentials = $request->only(['email', 'password']);
+        if(Auth::attempt($credentials) === false) {
+        return response()->json('Unauthorized', 401);
+        }
+
+        $user = Auth::user();
+        $token = $user->createToken('token');
+
+        return response()->json($token->plainTextToken);
+    }
+
+    public function registrar(Request $request) 
     {
         // Validar os dados do usuário
         $validator = Validator::make($request->all(), [
@@ -31,5 +45,13 @@ class RegisterController extends Controller
 
         // Retornar resposta de sucesso sem token
         return response()->json(['message' => 'User created successfully'], 201);
+    }
+
+    public function logout(Request $request)
+    {
+        $user = Auth::user();
+        $user->currentAccessToken()->delete();
+
+        return response()->json(['message' => 'Logged out']);
     }
 }
