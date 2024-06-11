@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UploadController;
@@ -28,4 +29,5 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 Route::post('/login', [LoginController::class, 'login']);
+Route::post('/cadastro', [RegisterController::class, 'registrar']);
 
