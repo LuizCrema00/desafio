@@ -1,7 +1,7 @@
 
 <template>
     <footer>
-      <p>&copy; 2024 Luiz Guilherme Crema. Todos os direitos reservados.</p>
+      <p>&copy; 2024 Luiz Guilherme Crema.</p>
     </footer>
   </template>
   

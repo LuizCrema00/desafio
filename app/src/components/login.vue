@@ -3,11 +3,11 @@
     <h1 class="login__titulo">LOGIN</h1>
     <form class="login__formulario" @submit.prevent="login">
       <div class="form__group">
-        <label class="form-label" for="email">Nome:</label>
+        <label class="form__label" for="email">Nome:</label>
         <input class="login__input" v-model="email" type="email" placeholder="Email" name="email" required />
       </div>
       <div class="form__group">
-        <label class="form-label" for="password">Senha:</label>
+        <label class="form__label" for="password">Senha:</label>
         <input class="login__input" v-model="password" type="password" placeholder="Senha" name="password" required />
       </div>
       <button class="login__botao" type="submit">Entrar</button>
@@ -74,7 +74,7 @@ export default {
     
   }
 
-  .form-label {
+  .form__label {
     margin-bottom: 0.5em;
     color: #213555;
   }

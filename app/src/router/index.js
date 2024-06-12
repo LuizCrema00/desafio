@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Login from '../components/login.vue';
 import Produtos from '../components/produtos.vue';
 import Cadastro from '../components/cadastro.vue';
+import EditarProduto from '../components/editarProduto.vue';
 
 const routes = [
   {
@@ -13,6 +14,11 @@ const routes = [
     path: '/produtos',
     name: 'Produtos',
     component: Produtos,
+  },
+  {
+    path: '/produtos/:id/editar',
+    name: 'EditarProduto',
+    component: EditarProduto
   },
   {
     path: '/cadastro', // Defina o path para /cadastro

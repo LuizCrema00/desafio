@@ -69,7 +69,6 @@ export default {
   .cadastro__formulario {
     display: flex;
     flex-direction: column;
-
     width: 70%;
     gap: 1.5em;
   }
