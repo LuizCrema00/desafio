@@ -17,7 +17,6 @@
     padding: 1rem;
     border-top: 1px solid #ddd;
     text-align: center;
-    position: fixed;
     width: 100%;
     bottom: 0;
   }

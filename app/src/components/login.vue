@@ -8,7 +8,7 @@
       </div>
       <div class="form__group">
         <label class="form-label" for="password">Senha:</label>
-        <input class="login__input" v-model="password" type="password" placeholder="Password" name="password" required />
+        <input class="login__input" v-model="password" type="password" placeholder="Senha" name="password" required />
       </div>
       <button class="login__botao" type="submit">Entrar</button>
     </form>
