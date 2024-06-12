@@ -11,6 +11,11 @@ class ApiController extends Controller
     public function index(Request $request) 
     {
        $query = Produto::query();
+
+       $sortBy = $request->get('sort_by', 'nome');
+       $order = $request->get('order', 'asc');
+       $query->orderBy($sortBy, $order);
+       
        if ($request->has('nome')) {
             $query->where('nome', $request->nome);
        }
