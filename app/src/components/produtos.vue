@@ -1,6 +1,7 @@
 <template>
   <div class="produtos__container">
     <h1>Produtos</h1>
+    <button class="button__cadastrar__produto" @click="$router.push('/produtos/cadastrar')">Cadastrar Novo Produto</button>
     <table class="produtos__tabela">
       <thead>
         <tr>
@@ -26,6 +27,11 @@
         </tr>
       </tbody>
     </table>
+    <div class="paginacao">
+      <button @click="paginaAtual--" :disabled="paginaAtual === 1">Anterior</button>
+      <span>Página {{ paginaAtual }} de {{ totalPaginas }}</span>
+      <button @click="paginaAtual++" :disabled="paginaAtual === totalPaginas">Próxima</button>
+    </div>
   </div>
 </template>
 
@@ -35,8 +41,13 @@ import api from '@/services/api';
 export default {
   data() {
     return {
-      produtos: []
+      produtos: [],
+      paginaAtual: 1,
+      totalPaginas: 1
     };
+  },
+  watch: {
+    paginaAtual: 'carregarProdutos'
   },
   async created() {
     await this.carregarProdutos();
@@ -44,8 +55,13 @@ export default {
   methods: {
     async carregarProdutos() {
       try {
-        const response = await api.get('/produtos');
+        const response = await api.get('/produtos', {
+          params: {
+            page: this.paginaAtual,
+          }
+        });
         this.produtos = response.data.data;
+        this.totalPaginas = response.data.last_page;
       } catch (error) {
         console.error('Failed to fetch produtos:', error);
       }
@@ -76,6 +92,22 @@ export default {
   margin: 0 auto;
   text-align: center;
   padding-bottom: 60px; /* Espaço extra para o footer */
+  display: flex;
+  flex-direction: column;
+}
+
+.button__cadastrar__produto {
+  background-color: #3b568c;
+  color: #ffffff;
+  border: none;
+  height: 40px;
+  width: 170px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.button__cadastrar__produto:hover {
+  background-color: #213555;
 }
 
 .produtos__tabela {
@@ -108,17 +140,45 @@ export default {
   cursor: pointer;
 }
 
+.paginacao {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.paginacao button {
+  padding: 5px 10px;
+  margin: 0 5px;
+  background-color: #3b568c;
+  color: #fefefe;
+  cursor: pointer;
+}
+
+.paginacao button:hover {
+  background-color: #213555;
+}
+
+.paginacao span {
+  margin: 0 10px;
+}
+
 .button__editar {
   background-color: #3b568c;
+}
+
+.button__editar:hover {
+  background-color: #213555;
 }
 
 .button__excluir {
   background-color: #C80036;
 }
 
-.produtos__tabela button:hover {
-  background-color: #3b568c;
+.button__excluir:hover {
+  background-color: #FF0000;
 }
+
 
 .modal {
   position: fixed;

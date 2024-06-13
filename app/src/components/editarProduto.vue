@@ -9,7 +9,7 @@
         </div>
         <div class="form__group">
           <label class="form__label" for="preco">Preço:</label>
-          <input class="form__input" id="preco" v-model="produto.preco" type="text" required />
+          <input class="form__input" id="preco" v-model="produto.preco" type="number" step="0.01" required />
         </div>
         <div class="form__group">
           <label class="form__label" for="tipo">Tipo:</label>
@@ -17,7 +17,7 @@
         </div>
         <div class="form__group">
           <label class="form__label" for="quantidade">Quantidade:</label>
-          <input class="form__input" id="quantidade" v-model="produto.quantidade" type="text" required />
+          <input class="form__input" id="quantidade" v-model="produto.quantidade" type="number" step="1" required />
         </div>
         <div class="buttons">
           <button  class="salvar__button"  type="submit">Salvar</button>
@@ -62,36 +62,36 @@
   </script>
   
   <style scoped>
-  .editar__produto {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1em;
-    width: 80%;
-  }
+    .editar__produto {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1em;
+      width: 80%;
+    }
 
-  .formulario__produto {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1em;
-    width: 80%;
-  }
+    .formulario__produto {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1em;
+      width: 80%;
+    }
 
-  .form__group {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-  }
+    .form__group {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+    }
 
-  .form__input {
-    border: 2px solid #4F709C;
-    border-radius: 5px;
-    padding: 0.5em;
-    width: 100%;
-  }
+    .form__input {
+      border: 2px solid #4F709C;
+      border-radius: 5px;
+      padding: 0.5em;
+      width: 100%;
+    }
 
-  .buttons {
+    .buttons {
     display: flex;
     gap: 2em;
   }
@@ -106,6 +106,10 @@
     cursor: pointer;
   }
 
+  .salvar__button:hover {
+    background-color: #213555;
+  }
+
   .cancelar__button {
     border: 2px solid #C80036;
     background-color: #C80036;
@@ -113,6 +117,10 @@
     text-decoration: none;
     text-align: center;
     width: 100px;
+  }
+
+  .cancelar__button:hover {
+    background-color: #FF0000;
   }
   </style>
   

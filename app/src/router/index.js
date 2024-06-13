@@ -3,6 +3,7 @@ import Login from '../components/login.vue';
 import Produtos from '../components/produtos.vue';
 import Cadastro from '../components/cadastro.vue';
 import EditarProduto from '../components/editarProduto.vue';
+import CadastrarProduto from '../components/cadastrarProduto.vue';
 
 const routes = [
   {
@@ -19,6 +20,11 @@ const routes = [
     path: '/produtos/:id/editar',
     name: 'EditarProduto',
     component: EditarProduto
+  },
+  {
+    path: '/produtos/cadastrar',
+    name: 'CadastrarProduto',
+    component: CadastrarProduto
   },
   {
     path: '/cadastro', // Defina o path para /cadastro
