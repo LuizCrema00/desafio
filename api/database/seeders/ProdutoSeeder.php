@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Produto;
 use Illuminate\Support\Facades\Storage;
@@ -68,10 +67,12 @@ class ProdutoSeeder extends Seeder
         ];
 
         foreach ($produtos as $produto) {
-            // Copia as imagens para a pasta public/storage/products
-            $sourcePath = base_path('resources/images/' . basename($produto['foto']));
+            // Caminho das imagens no repositório
+            $sourcePath = resource_path('images/' . basename($produto['foto']));
+            // Caminho de destino na pasta storage
             $destinationPath = storage_path('app/public/' . $produto['foto']);
 
+            // Copia a imagem apenas se não existir no destino
             if (File::exists($sourcePath) && !File::exists($destinationPath)) {
                 File::copy($sourcePath, $destinationPath);
             }
