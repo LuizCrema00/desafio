@@ -43,7 +43,13 @@ Siga os passos abaixo para configurar e executar o projeto localmente:
    Copie o arquivo .env.example para .env e configure as variáveis de ambiente, como conexão com banco de dados.
 
 
-4. ### Migrations e seeders
+4. ### Storage Link
+
+   Executar o comando para linkar a pasta storage com a public
+
+  php artisan storage:link
+
+5. ### Migrations e seeders
 
    php artisan migrate
 
