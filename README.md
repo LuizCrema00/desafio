@@ -46,7 +46,7 @@ Copie o arquivo .env.example para .env e configure as variáveis de ambiente, co
    Roda as seeders e popula as tabelas Users e Produtos.
    Para a tabela Users, criará um usuário autenticado na aplicacao.
    
-   Nome: Admin
+   Nome: admin
    
    Email: admin@admin.com
    
@@ -58,3 +58,18 @@ Copie o arquivo .env.example para .env e configure as variáveis de ambiente, co
    o projeto estará disponivel em http://localhost:8000 que é a porta padrao
 
 # FRONTEND
+
+1. ### Requisitos
+
+- NPM 7 ou superior
+- Node 18 ou superior
+
+2. ### Instalação de Dependências
+   
+   npm install
+
+3. ### Execucao do projeto
+
+   npm run dev
+
+   o projeto estará disponível em http://localhost:5173
