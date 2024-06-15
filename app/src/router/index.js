@@ -4,6 +4,8 @@ import Produtos from '../components/produtos.vue';
 import Cadastro from '../components/cadastro.vue';
 import EditarProduto from '../components/editarProduto.vue';
 import CadastrarProduto from '../components/cadastrarProduto.vue';
+import mostrarProduto from '../components/mostrarProduto.vue';
+import MostrarProduto from '../components/mostrarProduto.vue';
 
 const routes = [
   {
@@ -27,9 +29,15 @@ const routes = [
     component: CadastrarProduto
   },
   {
-    path: '/cadastro', // Defina o path para /cadastro
-    name: 'Cadastro', // Nomeie a rota como Cadastro
-    component: Cadastro, // Associe o componente Cadastro.vue à rota
+    path: '/produtos/:id/mostrar',
+    name: 'MostrarProduto',
+    component: MostrarProduto,
+    props: true
+  },
+  {
+    path: '/cadastro',
+    name: 'Cadastro',
+    component: Cadastro,
   },
 ];
 

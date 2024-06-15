@@ -21,6 +21,7 @@
           <td>{{ produto.quantidade }}</td>
           <td><img :src="getImageUrl(produto.foto)" alt="Imagem do Produto"></td>
           <td>
+            <button class="button__mostrar" @click="mostrarProduto(produto.id)">Mostrar</button>
             <button class="button__editar" @click="editarProduto(produto)">Editar</button>
             <button class="button__excluir" @click="excluirProduto(produto.id)">Excluir</button>
           </td>
@@ -72,6 +73,9 @@ export default {
     editarProduto(produto) {
       // Navegar para a página de edição do produto específico
       this.$router.push(`/produtos/${produto.id}/editar`);
+    },
+    mostrarProduto(id) {
+      this.$router.push(`/produtos/${id}/mostrar`);
     },
     async excluirProduto(id) {
       try {
@@ -163,6 +167,14 @@ export default {
   margin: 0 10px;
 }
 
+.button__mostrar {
+  background-color: #3b568c;
+}
+
+.button__mostrar:hover {
+  background-color: #213555;
+}
+
 .button__editar {
   background-color: #3b568c;
 }
@@ -179,50 +191,6 @@ export default {
   background-color: #FF0000;
 }
 
-
-.modal {
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
-}
-
-.modal__content {
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 40%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.modal__titulo {
-  display: flex;
-  justify-content: space-between;
-  gap: 12em;
-}
-
-.modal__formulario {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5em;
-  width: 50%;
-}
-
-.modal__label {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  width: 100%;
-}
-
 .produto__label {
   margin-bottom: 0.5em;
   color: #213555;
@@ -236,14 +204,14 @@ export default {
 }
 
 .produto__button {
-    padding: 0.5em;
-    background-color: #4F709C;
-    color: #ffffff;
-    border: none;
-    width: 70%;
-    margin: 0 auto;
-    cursor: pointer;
-  }
+  padding: 0.5em;
+  background-color: #4F709C;
+  color: #ffffff;
+  border: none;
+  width: 70%;
+  margin: 0 auto;
+  cursor: pointer;
+}
 
 .close {
   color: #213555;
@@ -259,7 +227,4 @@ export default {
   cursor: pointer;
 }
 </style>
-
-
-
 
