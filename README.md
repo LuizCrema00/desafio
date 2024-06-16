@@ -1,6 +1,6 @@
 # CRUD Supermercados
 
-Sistema CRUD de produtos desenvolvidos como avaliacao técnica
+Sistema CRUD de produtos desenvolvido como avaliacao técnica
 
 O sistema primeiramente possui Autenticação, para acesso do sistema o usuário precisa estar logado. Se não possuir login de acesso é dada uma opção para registrar
 
@@ -68,8 +68,6 @@ Siga os passos abaixo para configurar e executar o projeto localmente:
 
 6. ### Execução do projeto
    php artisan serve
-
-   o projeto estará disponivel em http://localhost:8000 que é a porta padrao
 
 # FRONTEND
 
